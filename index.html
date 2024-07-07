@@ -9,127 +9,201 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
+    :root {
+        --footer-text-color: white; /* Default footer text color */
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            padding-top: 56px;
-            background-color:#eeeeee;
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        padding-top: 56px;
+        background-color: #eeeeee;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            min-height: 80vh;
-        }
-
-        .map-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #eee;
-        }
-
-        .map-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .gallery img,
-        .gallery video {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-       .header,
-.footer {
-    background:#000000;
-    color: white;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.footer {
-    width: 100%;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar {
-   background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nav-link {
-    cursor: pointer;
-    color: #7e97a6 !important;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.nav-link:hover {
-    transform: scale(1.1);
-    background: linear-gradient(to right, #243949 0%, #517fa4 100%);
-}
-
-.nav-item i {
-    margin-right: 8px;
-}
-
-h2, h3 {
-    color: #343a40;
-    margin-bottom: 20px;
-}
-
-p, ul {
-    color: #555;
-}
-
-.btn-outline-primary {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-}
-
-
-
-        .current-date-time {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        #calendar {
-            margin-top: 20px;
-        }
-
-.carousel-item img {
-    max-height: 300px; /* Adjust height as needed */
-    object-fit: cover; /* Maintain aspect ratio */
-}
-
-@media (max-width: 768px) {
     .container {
-        padding: 10px;
+        max-width: 900px;
+        margin: auto;
+        min-height: 80vh;
     }
 
     .map-container {
-        padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #eee;
+border: 3px inset #000000;
+border-radius: 8px;
+    }
+
+    .map-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+
+    }
+
+    .gallery {
+        color: black; /* Text color set to black */
+    }
+
+    .gallery img,
+    .gallery video {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+border: 3px inset #000000;
+border-radius: 8px;
+    }
+
+    .gallery img:hover,
+    .gallery video:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .header,
+    .footer {
+        background: #000000;
+        color: var(--footer-text-color); /* Use CSS variable for text color */
+        padding: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        left: 0;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+        background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .nav-link {
-        display: block;
-        margin-bottom: 10px;
+        cursor: pointer;
+        color: #7e97a6 !important;
+        transition: transform 0.3s ease, background 0.3s ease;
     }
+
+    .nav-link:hover {
+        transform: scale(1.1);
+        background: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    }
+
+    .nav-item i {
+        margin-right: 8px;
+    }
+
+    h2, h3 {
+        color: #343a40;
+        margin-bottom: 20px;
+    }
+
+    p, ul {
+        color: #555;
+    }
+
+    .btn-outline-primary {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .current-date-time {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    #calendar {
+        margin-top: 20px;
+    }
+
+    .animate-fade {
+        animation: fadeIn 1s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .carousel-item img {
+        max-height: 300px; /* Adjust height as needed */
+        object-fit: cover; /* Maintain aspect ratio */
+border: 3px inset #000000;
+border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+        }
+
+        .map-container {
+            padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+        }
+
+        .nav-link {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+
+/* CSS to style the popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+border: 3px inset #000000;
+border-radius: 8px;
 }
 
-    </style>
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.popup img {
+    max-width: 100%;
+    max-height: 80vh;
+border: 3px inset #000000;
+border-radius: 8px;
+}
+
+.popup button {
+    margin-top: 10px;
+}
+
+/* Additional styling for main page content */
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -232,7 +306,17 @@ p, ul {
         class="btn btn-outline-primary"><i class="fas fa-map-marked-alt"></i> Places to Visit</a>
     <a href="https://calendar.google.com/calendar/u/0/r/month/2024/7/1" class="btn btn-outline-primary"><i class="fas fa-calendar-alt"></i> Calendar </a>
 </div>
+<!-- Button to show the popup -->
+    <button id="showInfo">Website Developed By</button>
 
+    <!-- Popup container (hidden by default) -->
+    <div id="popupContainer" class="popup">
+        <div class="popup-content">
+            <img src=".\Peerla Pandaga\gtk 2.jpg" alt="Information Image">
+            <p>I, GADIDAMALLA THANGELLA, developed this website to showcase my own village. It offers a brief overview of important events and places, along with visuals to introduce people to the village. </p>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
 
 
      <div class="container animate-fade" id="gallery" style="display:none;">
@@ -485,6 +569,16 @@ displayDateTime();
 
 // Update the date and time every second (optional)
 setInterval(displayDateTime, 1000);
+
+
+// JavaScript to handle button click and popup functionality
+document.getElementById("showInfo").addEventListener("click", function() {
+    document.getElementById("popupContainer").style.display = "flex";
+});
+
+document.getElementById("closePopup").addEventListener("click", function() {
+    document.getElementById("popupContainer").style.display = "none";
+});
 
     </script>
 </body>
