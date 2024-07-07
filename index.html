@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paluguntipalli Village</title>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            padding-top: 56px;
+            background-color:#eeeeee;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            min-height: 80vh;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #eee;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .gallery img,
+        .gallery video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+       .header,
+.footer {
+    background:#000000;
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+   background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    cursor: pointer;
+    color: #7e97a6 !important;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #243949 0%, #517fa4 100%);
+}
+
+.nav-item i {
+    margin-right: 8px;
+}
+
+h2, h3 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+p, ul {
+    color: #555;
+}
+
+.btn-outline-primary {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+
+        .current-date-time {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #calendar {
+            margin-top: 20px;
+        }
+
+.carousel-item img {
+    max-height: 300px; /* Adjust height as needed */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .map-container {
+        padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+    }
+
+    .nav-link {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#"><i class="fas fa-home"></i> Paluguntipalli</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('home')"><i class="fas fa-info-circle"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('gallery')"><i class="fas fa-images"></i> Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('main-events')"><i class="fas fa-star"></i> Main Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('village weather')"><i class="fas fa-cloud-sun"></i>Village Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('members')"><i class="fas fa-users"></i> Village Members</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('360 Views Of Village')"><i class="fas fa-calendar-alt"></i> 360 Views Of Village</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('important')"><i class="fas fa-bullhorn"></i> Important</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+     <div class="current-date-time">
+        <p id="date-time"></p>
+    </div>
+
+    <!-- Village Photos Carousel -->
+    <div class="container animate-fade" id="home">
+    <div id="villageCarousel" class="carousel slide mb-4" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+    <img class="d-block w-100" src=".\Peerla Pandaga\village 1.jpg" alt="Village Image 1">
+</div>
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\village 2.jpg" alt="Village Image 2">
+</div>
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\village 3.jpg" alt="Village Image 3">
+</div>
+<!-- Add more carousel items as needed -->
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\Peerla chavidi 1.jpg" alt="Peerla chavidi 1">
+</div>
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\Temple .jpg" alt="Temple">
+</div>
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\Hanuman Statue.jpg" alt="Hanuman Statue">
+</div>
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\School.jpg" alt="School">
+</div>
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\Kasinayana Temple.jpg" alt="Kasinayana Temple">
+</div>
+<div class="carousel-item">
+    <img class="d-block w-100" src=".\Peerla Pandaga\Water tank .jpg" alt="Water tank">
+</div>
+</div>
+
+<a class="carousel-control-prev" href="#villageCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#villageCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+</a>
+
+    </div>
+
+    <!-- Rest of the content for the Home page -->
+    <div class="map-container mb-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.727933912945!2d78.532818!3d17.412159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93b3f42a7a3f%3A0x17e35614a1b63cd!2sPaluguntipalli%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1650648282284!5m2!1sen!2sin"
+            allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <h2>About Paluguntipalli Village</h2>
+    <p>Paluguntipalli is a picturesque village located in Andhra Pradesh, known for its serene environment and vibrant
+        culture. The village is surrounded by lush greenery and offers a tranquil escape from the hustle and bustle of
+        city life.</p>
+    <p>The village is home to several historic temples and is known for its traditional festivals and occasions, which
+        are celebrated with great enthusiasm and joy by the locals.</p>
+    <a href="https://www.google.com/maps/dir//Paluguntipalli,+Andhra+Pradesh/@15.480978,78.8800053,12z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x3bb4e1b7fe8a6969:0x6daeb87da9e27400!2m2!1d78.962409!2d15.4808278!3e9?entry=ttu"
+        class="btn btn-outline-primary" target="_blank"><i class="fas fa-location-arrow"></i> How to Reach
+        Paluguntipalli</a>
+    <a href="https://www.google.com/maps/place/Peerla+Chavidi/@15.4799533,78.9621989,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipOPStkM2MGjCoyXkmJ5pFY5q62M3JAK7GJ5wHpI!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOPStkM2MGjCoyXkmJ5pFY5q62M3JAK7GJ5wHpI%3Dw205-h100-k-no!7i4000!8i1951!4m16!1m8!3m7!1s0x3bb4e1b7fe8a6969:0x6daeb87da9e27400!2sPaluguntipalli,+Andhra+Pradesh+523368!3b1!8m2!3d15.4808278!4d78.962409!16s%2Fm%2F051xw63!3m6!1s0x3bb4e16c6f66faed:0xf70656116ddb26a!8m2!3d15.4799415!4d78.9621971!10e5!16s%2Fg%2F11px3_fpg_?entry=ttu"
+        class="btn btn-outline-primary"><i class="fas fa-map-marked-alt"></i> Places to Visit</a>
+    <a href="https://calendar.google.com/calendar/u/0/r/month/2024/7/1" class="btn btn-outline-primary"><i class="fas fa-calendar-alt"></i> Calendar </a>
+</div>
+
+
+
+     <div class="container animate-fade" id="gallery" style="display:none;">
+    <h3>Gallery</h3>
+    <ul class="nav nav-tabs" id="galleryTabs" role="tablist">
+<li class="nav-item">
+            <a class="nav-link active" id="photos-gallery-tab" data-toggle="tab" href="#photos-gallery" role="tab" aria-controls="photos-gallery" aria-selected="false">Village Gallery</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" id="festival-gallery-tab" data-toggle="tab" href="#festival-gallery" role="tab" aria-controls="festival-gallery" aria-selected="false">Festival Gallery</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="videos-gallery-tab" data-toggle="tab" href="#videos-gallery" role="tab" aria-controls="videos-gallery" aria-selected="false">Village Festival Videos</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="galleryTabsContent">
+        <div class="tab-pane fade show active" id="photos-gallery" role="tabpanel" aria-labelledby="photos-gallery-tab">
+            <div class="row gallery mt-4">
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\village 1.jpg" alt="Photo 1">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\village 2.jpg" alt="Photo 2">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\village 3.jpg" alt="Photo 3">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\village busstand.jpg" alt="Photo 4">
+                </div>
+
+<div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\Peerla chavidi 1.jpg" alt="Photo 5">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\Temple .jpg" alt="Photo 6">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\Hanuman Statue.jpg" alt="Photo 7">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\Kasinayana Temple.jpg" alt="Photo 8">
+                </div>
+ <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\School.jpg" alt="Photo 9">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src=".\Peerla Pandaga\Water tank .jpg" alt="Photo 10">
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="videos-gallery" role="tabpanel" aria-labelledby="videos-gallery-tab">
+            <div class="row gallery mt-4">
+                <div class="col-md-4 mb-3">
+                    <video controls>
+                        <source src=".\Peerla Pandaga\pedda sarigesu 1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <video controls>
+                        <source src=".\Peerla Pandaga\pedda sarigesu 2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <video controls>
+                        <source src=".\Peerla Pandaga\pedda sarigesu 3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+         
+        <div class="tab-pane fade" id="festival-gallery" role="tabpanel" aria-labelledby="festival-gallery-tab">
+            <div id="festivalCarousel" class="carousel slide mt-4" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src=".\Peerla Pandaga\peerlu 1.jpg" alt="Festival Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src=".\Peerla Pandaga\pedda sarigesu 1.jpg" alt="Festival Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src=".\Peerla Pandaga\pedda sarigesu 2.jpg" alt="Festival Image 3">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#festivalCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#festivalCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container animate-fade" id="main-events" style="display:none;">
+
+    <h2>Main Events</h2>
+    <p><strong>Peerla Panguda</strong> is the main event celebrated in Paluguntipalli village during every Moharam. It is a traditional event marked by vibrant processions, religious rituals, and cultural performances. The event brings together the community in a spirit of unity and devotion.</p>
+    <h3>Peerla Panguda Images</h3>
+    <div class="row gallery mt-4">
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\peerlu 1.jpg" alt="Peerla Panguda Image 1">
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\peerla chavidi.jpg" alt="Peerla Panguda Image 2">
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\gundam.jpg" alt="Peerla Panguda Image 3">
+        </div>
+
+ <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\pedda sarigesu 1.jpg" alt="Peerla Panguda Image 1">
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\pedda sarigesu.jpg" alt="Peerla Panguda Image 2">
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\pedda sarigesu image 4.jpg" alt="Peerla Panguda Image 3">
+        </div>
+ <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\pedda sarigesu  3.jpg" alt="Peerla Panguda Image 1">
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\Thangella Swamy.jpg" alt="Peerla Panguda Image 2">
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\Thangella Swamy And Brother 2.jpg" alt="Peerla Panguda Image 3">
+        </div>
+<div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\Thangella Swamy And Brother.jpg" alt="Peerla Panguda Image 2">
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src=".\Peerla Pandaga\pedda sarigesu 2.jpg" alt="Peerla Panguda Image 3">
+        </div>
+
+
+    </div>
+    <h3>Peerla Panguda Videos</h3>
+    <div class="row gallery mt-4">
+        <div class="col-md-4 mb-3">
+            <video controls>
+                <source src=".\Peerla Pandaga\pedda sarigesu 1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="col-md-4 mb-3">
+            <video controls>
+                <source src=".\Peerla Pandaga\pedda sarigesu 3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="col-md-4 mb-3">
+            <video controls>
+                <source src=".\Peerla Pandaga\pedda sarigesu 2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+
+    <div class="container animate-fade" id="village weather" style="display:none;">
+        <h2>Village Weather</h2>
+        <p>Check the current weather conditions in Paluguntipalli:</p>
+        <a href="https://www.google.com/search?q=paluguntipalli+weather&rlz=1C1YTUH_enIN1011IN1011&oq=paluguntipalli+weather&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQIxgnMgwIAhAAGEMYgAQYigUyGAgDEC4YQxiDARjHARixAxjRAxiABBiKBTIMCAQQABhDGIAEGIoFMgwIBRAAGEMYgAQYigUyDQgGEAAYgwEYsQMYgAQyEwgHEC4YgwEYxwEYsQMY0QMYgAQyDQgIEAAYgwEYsQMYgAQyDQgJEAAYgwEYsQMYgATSAQgyOTI1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8"
+            class="btn btn-outline-primary" target="_blank"><i class="fas fa-cloud-sun"></i> Check Weather</a>
+    </div>
+
+    <div class="container animate-fade" id="360 Views Of Village" style="display:none;">
+        <h2>360 Views Of Village</h2>
+        <p>View Paluguntipalli Village 360 Degree views of Streets :</p>
+        <a href="https://www.google.com/maps/place/Paluguntipalli,+Andhra+Pradesh+523368/@15.4798863,78.9623224,3a,75y,312.42h,102.3t/data=!3m8!1e1!3m6!1sAF1QipNV2ytJPGqXx9quZQ30InjtuXaKFZ_SIFwanP3z!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNV2ytJPGqXx9quZQ30InjtuXaKFZ_SIFwanP3z%3Dw203-h100-k-no-pi-0-ya50.731716-ro-0-fo100!7i8704!8i4352!4m9!3m8!1s0x3bb4e1b7fe8a6969:0x6daeb87da9e27400!8m2!3d15.4808278!4d78.962409!10e5!14m1!1BCgIgARICCAI!16s%2Fm%2F051xw63?coh=205409&entry=ttu" class="btn btn-outline-primary" target="_blank"><i class="fas fa-location-arrow"></i> View 360 Views Of Village</a>
+    </div>
+
+    <div class="container animate-fade" id="members" style="display:none;">
+        <h2>Village Members</h2>
+        <p>The village of Paluguntipalli is home to a close-knit community of families who have lived here for generations. The residents are known for their hospitality and warm nature, making visitors feel welcome and at home.</p>
+    </div>
+
+    <div class="container animate-fade" id="important" style="display:none;">
+        <h2>Important</h2>
+        <p>Stay updated with important announcements and events:</p>
+        <ul>
+            <li><strong>Peerla Panduga :</strong> In July 2024</li>
+            <li><strong>Pedda Sarigesu :</strong> July 17, 2024</li>
+        </ul>
+    </div>
+
+    <div class="footer text-center mt-4">
+<p>&copy; 2024 Paluguntipalli Village. All rights reserved.</p>
+</div>
+
+   <!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            var pages = document.querySelectorAll('.container');
+            pages.forEach(function (page) {
+                page.style.display = 'none';
+            });
+
+            // Show the selected page
+            var pageToShow = document.getElementById(pageId);
+            if (pageToShow) {
+                pageToShow.style.display = 'block';
+            }
+        }
+
+        function displayDateTime() {
+    var now = new Date();
+
+    // Get hours in 12-hour format
+    var hours = now.getHours();
+    var meridian = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Handle midnight (0 hours)
+
+    // Get minutes and seconds
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+
+    // Format the time string
+    var timeString = hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds + ' ' + meridian;
+
+    // Format the date string
+    var dateString = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    // Display the date and time
+    var dateTimeString = dateString + ' ' + timeString;
+
+    // Update the content inside the <p> element with id 'date-time'
+    var dateTimeElement = document.getElementById('date-time');
+    if (dateTimeElement) {
+        dateTimeElement.textContent = dateTimeString;
+    }
+}
+
+// Call displayDateTime initially
+displayDateTime();
+
+// Update the date and time every second (optional)
+setInterval(displayDateTime, 1000);
+
+    </script>
+</body>
+
+</html>
